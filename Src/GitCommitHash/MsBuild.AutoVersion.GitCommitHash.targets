@@ -2,7 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Include MsBuildCommunityTask -->
   <PropertyGroup>
-    <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\.build</MSBuildCommunityTasksPath>
+    <MSBuildCommunityTasksPath>$(SolutionDir)\.build</MSBuildCommunityTasksPath>
   </PropertyGroup>
 
   <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.targets"/>

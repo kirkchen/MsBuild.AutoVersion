@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>MsBuild.AutoVersion.GitCommitHash</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <authors>Kirk Chen</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Auto generate AssemblyInfo.cs via datetime and git commit hash</description>
