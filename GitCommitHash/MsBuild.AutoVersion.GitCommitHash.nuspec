@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>MsBuild.AutoVersion.GitCommitHash</id>
+        <version>1.0.0</version>
+        <authors>Kirk Chen</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Auto generate AssemblyInfo.cs via datetime and git commit hash</description>
+        <dependencies>
+            <dependency id="MSBuildTasks" version="1.4.0.65" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="MsBuild.AutoVersion.GitCommitHash.targets" target="build\MsBuild.AutoVersion.GitCommitHash.targets" />
+    </files>
+</package>

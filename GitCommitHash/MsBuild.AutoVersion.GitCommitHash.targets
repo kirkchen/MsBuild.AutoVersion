@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Include MsBuildCommunityTask -->
+  <PropertyGroup>
+    <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\.build</MSBuildCommunityTasksPath>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.targets"/>
+
+  <PropertyGroup>    
+    <Major Condition="$(Major) == ''">1</Major>    
+  </PropertyGroup>
+
+  <!-- Version Target-->
+  <Target Name="Version">
+    <!-- Generate Version Number -->
+    <Time>
+      <Output TaskParameter="Year" PropertyName="Year" />      
+    </Time>
+    <Time Format="MMdd">
+      <Output TaskParameter="FormattedTime" PropertyName="Date" />
+    </Time>    
+    <GitVersion LocalPath="$(MSBuildProjectDirectory)">
+      <Output TaskParameter="CommitHash" PropertyName="Revision" />
+    </GitVersion>
+
+    <CreateProperty Value="$(Major).$(Year).$(Date).$(Revision)">
+      <Output TaskParameter="Value" PropertyName="InfomationVersion" />
+    </CreateProperty>
+
+    <CreateProperty Value="$(Major).$(Year).$(Date)">
+      <Output TaskParameter="Value" PropertyName="Version" />
+    </CreateProperty>
+
+    <Message Text="Information Version: $(InfomationVersion)"/>
+    <Message Text="Version: $(Version)"/>
+
+    <!-- Generate Output File -->    
+    <AssemblyInfo CodeLanguage="CS"
+                  OutputFile="$(MSBuildProjectDirectory)\Properties\AssemblyInfo.cs"
+                  GenerateClass="true"                  
+                  AssemblyProduct="$(MSBuildProjectName)"
+                  AssemblyCopyright="Copyright © $(Year). All rights reserved."
+                  AssemblyConfiguration="$(BuildConfiguration)"
+                  AssemblyVersion="$(Version)"
+                  AssemblyFileVersion="$(Version)"
+                  AssemblyInformationalVersion="$(InfomationVersion)" />
+  </Target>
+
+  <!-- Override DependsOn-->
+  <PropertyGroup>
+    <BuildDependsOn>
+      Version;
+      $(BuildDependsOn)
+    </BuildDependsOn>    
+  </PropertyGroup>
+</Project>
