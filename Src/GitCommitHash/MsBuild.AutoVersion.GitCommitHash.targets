@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <!-- Version Target-->
-  <Target Name="Version">
+  <Target Name="Version" Condition="$(AutoVersion) == 'True'">
     <!-- Generate Version Number -->
     <Time>
       <Output TaskParameter="Year" PropertyName="Year" />      

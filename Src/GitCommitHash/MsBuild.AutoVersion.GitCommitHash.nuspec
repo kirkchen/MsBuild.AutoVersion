@@ -2,10 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>MsBuild.AutoVersion.GitCommitHash</id>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <authors>Kirk Chen</authors>
+        <projectUrl>https://github.com/kirkchen/MsBuild.AutoVersion</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Auto generate AssemblyInfo.cs via datetime and git commit hash</description>
+        <tags>msbuild</tags>
         <dependencies>
             <dependency id="MSBuildTasks" version="1.4.0.65" />
         </dependencies>
